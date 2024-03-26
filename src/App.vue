@@ -10,7 +10,12 @@ import Header from "./components/Header.vue";
 </template>
 
 <style>
+#app{
+  height: 100vh !important;
+  
+}
 body {
+  height: 100vh !important;
   background: #1f1f1f;
 }
 </style>

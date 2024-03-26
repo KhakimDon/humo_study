@@ -8,9 +8,17 @@ import { ref } from "vue";
 
 let valid = true
 
-function ariza() {
+const onSwiper = (swiper) => {
+  console.log(swiper.activeIndex);
+}
+
+
+
+function ariza(item) {
   console.log('asddas');
-  document.querySelector(".animback").classList.toggle('animbackactive')
+  if(item == 'hidden'){
+    document.querySelector(".need").click()
+  }
 }
 
 let animateButton = function (e) {
@@ -35,10 +43,10 @@ for (var i = 0; i < bubblyButtons.length; i++) {
 </script>
 <template>
   <main class="h-[100vh] z-[3]">
-    <swiper :direction="'vertical'" class="mySwiper">
+    <swiper :direction="'vertical'" @swiper="onSwiper" class="mySwiper swiperboss">
       <swiper-slide class="px-[20px]">
         <div class="w-[100%]">
-          
+
 
 
           <h1
@@ -52,14 +60,182 @@ for (var i = 0; i < bubblyButtons.length; i++) {
           <p class="text-white text-[10px] font-[Montserrat] font-[300] mt-[21px]">Qiziqishingizga qarab universitet
             tanlang va rus tilini o`rganib oliy ma`lumotga ega boling.</p>
           <div class="mt-[29px] flex gap-[10px]">
-            <button
-              class="ariza bg-gradient-to-r from-blue to-green w-[138px] h-[45px]  rounded-[22px] font-[Montserrat] font-[1000] text-[12px] relative text-white">
+            <label for="my_modal_7"
+              class="ariza flex items-center justify-center bg-gradient-to-r from-blue to-green w-[138px] h-[45px]  rounded-[22px] font-[Montserrat] font-[1000] text-[12px] relative text-white">
               Barcha Univ
               <div class="wave"></div>
-            </button>
+            </label>
+
+            <!-- modal  -->
+            <input type="checkbox" id="my_modal_7" class="modal-toggle" />
+            <div class="modal openariza" role="dialog">
+              <div class="modal-box openarizawrp">
+                <label for="my_modal_7"
+                  class="absolute right-[20px] text-[#5c5c5c] text-[25px] top-[15px]">&times;</label>
+                <h3
+                  class="font-[1000] mb-[20px] text-[30px] font-[Montserrat] bg-gradient-to-r from-blue to-green bg-clip-text text-transparent ">
+                  Universitetlar</h3>
+
+
+                <div class="mb-[10px]">
+                  <span class="text-white font-[Montserrat] mb-[2px] text-[12px]">Yo'nalishlar</span>
+                  <select class="select  bg-[#333] text-white w-full max-w-xs">
+                    <option selected>Barchasi</option>
+                    <option>Информационные технологии и системы </option>
+                    <option>Информационные технологии и системы </option>
+                    <option>Электроэнергетика и электротехника </option>
+                    <option>Автодорожный и железнодорожный </option>
+                    <option>Экономика и Менеджмент </option>
+                    <option>Психология </option>
+                    <option>Гуманитарное</option>
+                    <option>Физическая культура </option>
+                    <option>Нефт и газ</option>
+                    <option>Лингвистика </option>
+                    <option>Медицина </option>
+                  </select>
+                </div>
+                <div class="mb-[20px]">
+                  <span class="text-white font-[Montserrat] mb-[2px] text-[12px]">Fakultet</span>
+                  <select class="select  bg-[#333] text-white w-full max-w-xs">
+                    <option selected>Barchasi</option>
+                    <option>Информационные технологии и системы </option>
+                    <option>Информационные технологии и системы </option>
+                    <option>Электроэнергетика и электротехника </option>
+                    <option>Автодорожный и железнодорожный </option>
+                    <option>Экономика и Менеджмент </option>
+                    <option>Психология </option>
+                    <option>Гуманитарное</option>
+                    <option>Физическая культура </option>
+                    <option>Нефт и газ</option>
+                    <option>Лингвистика </option>
+                    <option>Медицина </option>
+                  </select>
+                </div>
+
+                <div class="mb-[20px]">
+                  <p class="text-white font-[Montserrat] mb-[4px] text-[12px]">Shahar</p>
+                  <div class="flex justify-between">
+                    <div class="flex items-center">
+                      <label for="mosk" class="text-white mr-[10px] font-[Montserrat]">Moskva</label>
+                      <input id="mosk" checked type="radio" name="radio-1" class="radio border-blue" />
+                    </div>
+                    <div class="flex items-center">
+                      <label for="pit" class="text-white mr-[10px] font-[Montserrat]">Sankt-peterburg</label>
+                      <input id="pit" type="radio" name="radio-1" class="radio border-blue" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-[10px]">
+                  <span class="text-white font-[Montserrat] mb-[2px] text-[12px]">O'qish turi</span>
+                  <select class="select  bg-[#333] text-white w-full max-w-xs">
+                    <option selected>Barchasi</option>
+                    <option>Kunduzgi</option>
+                    <option>Kechgi</option>
+                    <option>Sritqi</option>
+                  </select>
+                </div>
+
+
+                <div class="modal-action w-[100%]">
+                  <div @click="ariza()" class="arizaBtn overflow-hidden relative">
+                    <div onclick="my_modal_99.showModal()" class="btnbtnbtn">
+                      <label for="my_modal_7" class="font-[1000] arizatext font-[Montserrat] text-[18px] bg-gradient-to-r from-blue to-green
+                        bg-clip-text text-transparent">
+                        Qidirish
+                      </label>
+                    </div>
+                    <!-- <img src="../assets//images/btn.png" alt=""> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <dialog id="my_modal_99" class="modal openariza">
+              <div style="padding: 18px;" class="modal-box openarizawrp flex flex-col justify-between">
+                <form class="absolute right-[0px]" method="dialog">
+                  <button class="btn need text-white btn-sm btn-circle btn-ghost absolute right-[30px] top-[0px]">✕</button>
+                </form>
+                <h3 class="font-[1000] text-[25px] font-[Montserrat] bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">Qidiruv natijasi</h3>
+
+
+                <div class="overflow-x-auto mt-[25px] text-white">
+                  <table class="table">
+                    <!-- head -->
+                    <thead>
+                      <tr class="text-white">
+                        <th>Nomi</th>
+                        <th>Yo'nalish</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- row 1 -->
+                      <tr>
+                        <td>1. МГУ</td>
+                        <td>Texnologiya</td>
+                        <td>
+                          <div class="badge badge-accent">info</div>
+                      </td>
+                      </tr>
+                      <!-- row 1 -->
+                      <tr>
+                        <td>2. RUDN</td>
+                        <td>Texnologiya</td>
+                        <td>
+                          <div class="badge badge-accent">info</div>
+                      </td>
+                      </tr>
+                      <tr>
+                        <td>2. RUDN</td>
+                        <td>Texnologiya</td>
+                        <td>
+                          <div class="badge badge-accent">info</div>
+                      </td>
+                      </tr>
+                      <tr>
+                        <td>2. RUDN</td>
+                        <td>Texnologiya</td>
+                        <td>
+                          <div class="badge badge-accent">info</div>
+                      </td>
+                      </tr>
+                      <!-- row 1 -->
+                      <tr>
+                        <td>3. Медицинский</td>
+                        <td>Texnologiya</td>
+                        <td>
+                          <div class="badge badge-accent">info</div>
+                      </td>
+                      </tr>
+                      <!-- row 1 -->
+                      <tr>
+                        <td>4. Боткина</td>
+                        <td>Texnologiya</td>
+                        <td>
+                          <div class="badge badge-accent">info</div>
+                      </td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                </div>
+
+                <div @click="ariza('hidden')" class="arizaBtn mt-[30px] overflow-hidden relative">
+                    <div class="btnbtnbtn">
+                      <label for="my_modal_6"
+                        class="font-[1000] arizatext font-[Montserrat] text-[18px] bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
+                        Ko'proq ma'lumot olish</label>
+                    </div>
+                  </div>
+              </div>
+            </dialog>
+
+
             <label for="my_modal_6"
               class="top-10u relative flex items-center justify-center bg-gradient-to-r from-blue to-green bg-clip-text text-transparent w-[150px] h-[45px]  rounded-[22px] font-[Montserrat] font-[1000] text-[12px]">Ariza
-              qoldirish</label>
+              qoldirish</label> 
 
             <!-- Put this part before </body> tag -->
             <input type="checkbox" id="my_modal_6" class="modal-toggle" />
@@ -88,10 +264,8 @@ for (var i = 0; i < bubblyButtons.length; i++) {
                   bog`lanadi.</p>
                 <div class="modal-action w-[100%]">
                   <div @click="ariza()" class="arizaBtn overflow-hidden relative">
-                    <div class="animback"></div>
                     <div class="btnbtnbtn">
-                      <label
-                      for="my_modal_6"
+                      <label for="my_modal_6"
                         class="font-[1000] arizatext font-[Montserrat] text-[18px] bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
                         Ariza qoldirish</label>
                     </div>
@@ -107,15 +281,7 @@ for (var i = 0; i < bubblyButtons.length; i++) {
           </div>
           <div>
             <!-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> -->
-            <dialog id="my_modal_3" class="modal">
-              <div class="modal-box">
-                <form method="dialog">
-                  <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                </form>
-                <h3 class="font-bold text-lg">Hello!</h3>
-                <p class="py-4">Press ESC key or click on ✕ button to close</p>
-              </div>
-            </dialog>
+
           </div>
           <div class="h-[250px] border-white overflow-hidden border-[1px] rounded-[10px] mt-[30px] w-[100%]">
             <iframe class="w-[100%] h-[100%]" src="https://www.youtube.com/embed/95MObjlb2KM"
@@ -333,7 +499,7 @@ body {
 }
 
 .openarizawrp {
-  height: 470px;
+  min-height: 470px;
   background: #1F1F1F;
   border: 1px solid #4e4e4e;
   background-image: url('../assets/images/baby.png');
@@ -406,24 +572,4 @@ body {
   padding: 1px;
   border-radius: 5px;
 }
-
-.animback {
-  position: absolute;
-  z-index: 20;
-  filter: blur(10px);
-  background: #272727;
-  width: 100%;
-  left: -90%;
-  bottom: 0;
-  height: 54px;
-  transition-duration: 1s;
-  transition-timing-function: linear;
-}
-
-.animbackactive {
-  left: 100%;
-}
-
-
-
 </style>
