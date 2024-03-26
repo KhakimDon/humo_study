@@ -3,10 +3,34 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import 'swiper/css/pagination';
 import "swiper/css";
+import { ref } from "vue";
 
-setTimeout(() => {
-    
-}, 1000);
+
+let valid = true
+
+function ariza() {
+  console.log('asddas');
+  document.querySelector(".animback").classList.toggle('animbackactive')
+}
+
+let animateButton = function (e) {
+  e.preventDefault;
+  //reset animation
+  e.target.classList.remove('animate');
+
+  e.target.classList.add('animate');
+  setTimeout(function () {
+    e.target.classList.remove('animate');
+  }, 700);
+};
+
+var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+for (var i = 0; i < bubblyButtons.length; i++) {
+  bubblyButtons[i].addEventListener('click', animateButton, false);
+}
+
+
 
 </script>
 <template>
@@ -14,6 +38,9 @@ setTimeout(() => {
     <swiper :direction="'vertical'" class="mySwiper">
       <swiper-slide class="px-[20px]">
         <div class="w-[100%]">
+          
+
+
           <h1
             class="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent text-[40px] font-[Montserrat] font-[1000] leading-[40px] mb-[6px]">
             ROSSIYADA
@@ -26,54 +53,76 @@ setTimeout(() => {
             tanlang va rus tilini o`rganib oliy ma`lumotga ega boling.</p>
           <div class="mt-[29px] flex gap-[10px]">
             <button
-              class="ariza bg-gradient-to-r from-blue to-green w-[138px] h-[45px]  rounded-[22px] font-[Montserrat] font-[1000] text-[12px] relative text-white">Ariza
-              Qoldirish <div class="wave"></div></button>
-            <button
-              class="top-10u relative bg-gradient-to-r from-blue to-green bg-clip-text text-transparent w-[150px] h-[45px]  rounded-[22px] font-[Montserrat] font-[1000] text-[12px]">Top
-              10 Universitet</button>
+              class="ariza bg-gradient-to-r from-blue to-green w-[138px] h-[45px]  rounded-[22px] font-[Montserrat] font-[1000] text-[12px] relative text-white">
+              Barcha Univ
+              <div class="wave"></div>
+            </button>
+            <label for="my_modal_6"
+              class="top-10u relative flex items-center justify-center bg-gradient-to-r from-blue to-green bg-clip-text text-transparent w-[150px] h-[45px]  rounded-[22px] font-[Montserrat] font-[1000] text-[12px]">Ariza
+              qoldirish</label>
+
+            <!-- Put this part before </body> tag -->
+            <input type="checkbox" id="my_modal_6" class="modal-toggle" />
+            <div class="modal openariza" role="dialog">
+              <div class="modal-box flex flex-col  justify-between items-center openarizawrp">
+                <label for="my_modal_6"
+                  class="absolute right-[20px] text-[#5c5c5c] text-[25px] top-[15px]">&times;</label>
+                <div class="h-[64px] mb-[20px] flex items-center justify-center w-[64px] bg-[white] rounded-[100%]">
+                  <img src="../assets/images/2logo.svg" alt="">
+                </div>
+                <div class="w-[100%] text-center">
+                  <h3
+                    class="font-[1000] font-[Montserrat] mb-[6px] text-[20px] bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
+                    HUMO O'QUV MARKAZI</h3>
+                  <div class="arizaline mb-[20px]"></div>
+                </div>
+                <div class="w-[100%] arizainpwrp">
+                  <input placeholder="+7 (999) 777-77-77" type="text"
+                    class="h-[50px] w-[100%] arizainput font-[Montserrat] pl-[10px] font-[700] rounded-[6px]">
+                </div>
+                <div class="w-[100%] arizainpwrp">
+                  <input placeholder="Ivan Ivanov" type="text"
+                    class="h-[50px] w-[100%] arizainput font-[Montserrat] pl-[10px] font-[700] rounded-[6px]">
+                </div>
+                <p class="mt-[12px] text-[#5c5c5c] text-[13px]">Ariza qoldirganingizdan so`ng tez orada siz bilan admin
+                  bog`lanadi.</p>
+                <div class="modal-action w-[100%]">
+                  <div @click="ariza()" class="arizaBtn overflow-hidden relative">
+                    <div class="animback"></div>
+                    <div class="btnbtnbtn">
+                      <label
+                      for="my_modal_6"
+                        class="font-[1000] arizatext font-[Montserrat] text-[18px] bg-gradient-to-r from-blue to-green bg-clip-text text-transparent">
+                        Ariza qoldirish</label>
+                    </div>
+                    <!-- <img src="../assets//images/btn.png" alt=""> -->
+                  </div>
+
+                  <!-- надо сюда кликать -->
+                  <label for="my_modal_6"></label>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          <div class="h-[250px] border-white border-[1px] rounded-[10px] mt-[30px] w-[100%]">
-            <swiper   :space-between="5" :direction="'horizontal'" class="mySwiper2 rounded-[10px]">
-              <swiper-slide class="h-[100%] flex flex-col">
-                <div
-                  style="background-image: url('https://энергия-единой-сети.рф/wp-content/uploads/2023/10/tpu-konferencziya-678x381.jpg');"
-                  class="h-[70%] flex items-end p-[10px] bg-cover bg-center w-[100%]">
-                  <p class="shadows font-[Montserrat] font-[1000] ">Электроэнергетика и электротехника</p>
-                </div>
-                <div class="h-[30%] w-[100%] p-[10px] flex flex-col justify-between">
-                  <p class="text-white font-[Montserrat]">Ta`lim: Kunduzgi, Sirtqi, Onlayn</p>
-                  <div class="flex gap-2">
-                    <button
-                      class="py-[2px] font-[600] px-[10px] rounded-[20px] font-[Montserrat] text-[10px] bg-gradient-to-r from-blue to-green">Grant</button>
-                    <button
-                      class="py-[2px] font-[600] px-[10px] rounded-[20px] font-[Montserrat] text-[10px] bg-gradient-to-r from-blue to-green">Kontrakt
-                      90.000₽ ~ 300.000₽ </button>
-                  </div>
-                </div>
-
-
-              </swiper-slide>
-              <swiper-slide v-for="item of 10" :key="item.id" class="h-[100%] flex flex-col">
-                <div
-                  style="background-image: url('https://cdn.tripster.ru/thumbs2/31e059f8-92ba-11ed-882c-d6f107627fa6.1220x600.jpeg');"
-                  class="h-[70%] flex items-end p-[10px] bg-cover bg-center w-[100%]">
-                  <p class="shadows font-[Montserrat] font-[1000] ">Информационные технологии и системы</p>
-                </div>
-                <div class="h-[30%] w-[100%] p-[10px] flex flex-col justify-between">
-                  <p class="text-white font-[Montserrat]">Ta`lim: Kunduzgi, Sirtqi, Onlayn</p>
-                  <div class="flex gap-2">
-                    <button
-                      class="py-[2px] font-[600] px-[10px] rounded-[20px] font-[Montserrat] text-[10px] bg-gradient-to-r from-blue to-green">Grant</button>
-                    <button
-                      class="py-[2px] font-[600] px-[10px] rounded-[20px] font-[Montserrat] text-[10px] bg-gradient-to-r from-blue to-green">Kontrakt
-                      60.000₽ ~ 250.000₽ </button>
-                  </div>
-                </div>
-
-
-              </swiper-slide>
-            </swiper>
+          <div>
+            <!-- <button class="btn" onclick="my_modal_3.showModal()">open modal</button> -->
+            <dialog id="my_modal_3" class="modal">
+              <div class="modal-box">
+                <form method="dialog">
+                  <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                </form>
+                <h3 class="font-bold text-lg">Hello!</h3>
+                <p class="py-4">Press ESC key or click on ✕ button to close</p>
+              </div>
+            </dialog>
+          </div>
+          <div class="h-[250px] border-white overflow-hidden border-[1px] rounded-[10px] mt-[30px] w-[100%]">
+            <iframe class="w-[100%] h-[100%]" src="https://www.youtube.com/embed/95MObjlb2KM"
+              title="Rus tilida 1000ta fe&#39;lning aytilishi (1-qism)! +79099022030 Rus tili guruhiga yozilish"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
 
         </div>
@@ -95,7 +144,8 @@ setTimeout(() => {
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
               </svg>
-              <span>10 yildan ortiq tajriba va <span class="text-green">500</span> dan ortiq abiturient biga ishondi</span>
+              <span>10 yildan ortiq tajriba va <span class="text-green">500</span> dan ortiq abiturient biga
+                ishondi</span>
             </li>
 
           </ol>
@@ -115,7 +165,8 @@ setTimeout(() => {
           </svg>
 
         </div>
-        <div class="h-[126px] w-[100%] flex flex-col relative justify-between bg-green p-[17px] border-white border mt-[-1px]">
+        <div
+          class="h-[126px] w-[100%] flex flex-col relative justify-between bg-green p-[17px] border-white border mt-[-1px]">
           <span class="font-[druk] text-white text-[12px] ">Kontrakt soni</span>
           <article class="font-[druk] text-white text-[35px]">3722+</article>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -139,21 +190,36 @@ setTimeout(() => {
           <div class="font-[druk] text-[18px] p-[15px] border">Bizning raqamlar:</div>
           <div class="p-[15px] text-white border mt-[-1px]">
             <div class="flex justify-between items-center mb-[20px]">
-              <span class="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent text-[12px] font-[Montserrat] font-[1000]">+7 (123) 123-23-33 - Will Smith</span>
-              <button class="bg-gradient-to-r from-blue to-green text-[10px] font-[Montserrat] px-[10px] py-[10px] rounded-[30px] font-[1000]">Позвонить</button>
+              <span
+                class="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent text-[12px] font-[Montserrat] font-[1000]">+7
+                (123) 123-23-33 - Will Smith</span>
+              <button
+                class="bg-gradient-to-r from-blue to-green text-[10px] font-[Montserrat] px-[10px] py-[10px] rounded-[30px] font-[1000]">Позвонить</button>
             </div>
             <div class="flex justify-between items-center">
-              <span class="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent text-[12px] font-[Montserrat] font-[1000]">+7 (123) 123-23-33 - Will Smith</span>
-              <button class="bg-gradient-to-r from-blue to-green text-[10px] font-[Montserrat] px-[10px] py-[10px] rounded-[30px] font-[1000]">Позвонить</button>
+              <span
+                class="bg-gradient-to-r from-blue to-green bg-clip-text text-transparent text-[12px] font-[Montserrat] font-[1000]">+7
+                (123) 123-23-33 - Will Smith</span>
+              <button
+                class="bg-gradient-to-r from-blue to-green text-[10px] font-[Montserrat] px-[10px] py-[10px] rounded-[30px] font-[1000]">Позвонить</button>
             </div>
           </div>
         </div>
         <div class="w-[100%]">
           <div class="font-[druk] text-[18px] p-[15px] text-white border">Bizni ijtimoiy tarmoqlarda kuzating:</div>
           <div class="flex justify-between p-[17px] text-white border mt-[-1px]">
-            <div class="flex items-center justify-center bg-gradient-to-r from-[#FF2C69] to-[#8816FE] w-[24%] rounded-[30px] py-[5px]"><img src="../assets/images/inst.png" alt=""></div>
-            <div class="flex items-center justify-center bg-gradient-to-r from-blue to-green w-[24%] rounded-[30px] py-[5px]"><img src="../assets/images/tg.png" alt=""></div>
-            <div class="flex items-center justify-center bg-gradient-to-r from-[#FF0000] to-[#A30101] w-[24%] rounded-[30px] py-[5px]"><img src="../assets/images/you.png" alt=""></div>
+            <div
+              class="flex items-center justify-center bg-gradient-to-r from-[#FF2C69] to-[#8816FE] w-[24%] rounded-[30px] py-[5px]">
+              <img src="../assets/images/inst.png" alt="">
+            </div>
+            <div
+              class="flex items-center justify-center bg-gradient-to-r from-blue to-green w-[24%] rounded-[30px] py-[5px]">
+              <img src="../assets/images/tg.png" alt="">
+            </div>
+            <div
+              class="flex items-center justify-center bg-gradient-to-r from-[#FF0000] to-[#A30101] w-[24%] rounded-[30px] py-[5px]">
+              <img src="../assets/images/you.png" alt="">
+            </div>
           </div>
         </div>
       </swiper-slide>
@@ -261,4 +327,103 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.openariza {
+  backdrop-filter: blur(10px);
+}
+
+.openarizawrp {
+  height: 470px;
+  background: #1F1F1F;
+  border: 1px solid #4e4e4e;
+  background-image: url('../assets/images/baby.png');
+  background-size: contain !important;
+  background-repeat: no-repeat;
+}
+
+.arizaBtn {
+  background: #222222;
+  width: 100%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.402);
+  height: 50px;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arizaBtn .btnbtnbtn {
+  width: calc(100% - 8px);
+  border-radius: 6px;
+  height: 40px;
+  background: linear-gradient(90deg, transparent, #515151);
+  position: relative;
+}
+
+.arizaBtn .btnbtnbtn::after {
+  content: '';
+  left: 50%;
+  border-radius: 5px;
+  top: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background: #222222;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+}
+
+.arizatext {
+  z-index: 10;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.arizaline {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, #1697FA, #22edc4);
+}
+
+.arizainput {
+  outline: none;
+  color: white;
+  background: linear-gradient(90deg, #232323, #454545);
+}
+
+.arizainput::placeholder {
+  color: #454545;
+}
+
+.arizainpwrp {
+  background: linear-gradient(90deg, #5c5c5c, rgb(83, 83, 83));
+  ;
+  padding: 1px;
+  border-radius: 5px;
+}
+
+.animback {
+  position: absolute;
+  z-index: 20;
+  filter: blur(10px);
+  background: #272727;
+  width: 100%;
+  left: -90%;
+  bottom: 0;
+  height: 54px;
+  transition-duration: 1s;
+  transition-timing-function: linear;
+}
+
+.animbackactive {
+  left: 100%;
+}
+
+
+
 </style>
